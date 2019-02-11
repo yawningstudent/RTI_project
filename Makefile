@@ -1,12 +1,14 @@
 all: main
 
-main: main.o Federate1.o Fed1amb.o
-	g++ main.o Federate1.o Fed1amb.o /home/andrey/rti/lib/librti1516e.so /home/andrey/rti/lib/libOpenRTI.so /home/andrey/rti/lib/libFedTime.so /home/andrey/rti/lib/libfedtime1516e.so -o main
+main: robot1_main.o Federate.o Fedamb.o
+	g++ robot1_main.o Federate.o Fedamb.o /home/andrey/rti/lib/librti1516e.so /home/andrey/rti/lib/libOpenRTI.so /home/andrey/rti/lib/libFedTime.so /home/andrey/rti/lib/libfedtime1516e.so -o robot1
 
-main.o: main.cpp Federate1.h
-	g++ -c Federate1.h main.cpp
+robot1_main.o: robot1_main.cpp Federate.h
+	g++ -c -W Federate.h robot1_main.cpp
 
-Federate1.o: Federate1.h Fed1amb.h Federate1.cpp
-	g++ -c Federate1.h Fed1amb.h Federate1.cpp 
-Fed1amb.o: Fed1amb.h Fed1amb.cpp
-	g++ -c Fed1amb.h Fed1amb.cpp
+Federate.o: Federate.h Fedamb.h Federate.cpp
+	g++ -c -W Federate.h Fedamb.h Federate.cpp 
+Fedamb.o: Fedamb.h Fedamb.cpp
+	g++ -c -w Fedamb.h Fedamb.cpp
+clear:
+	rm -f robot1_main.o Fedamb.o Federate.o Federate.h.gch Fedamb.h.gch

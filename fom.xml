@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<objectModel>
+    <objects>
+        <objectClass>
+            <name>HLAobjectRoot</name>
+                <objectClass>
+                    <name>Robot</name>
+                    <sharing>PublishSubscribe</sharing>
+                    <semantics>Math point</semantics>
+                    <attribute>
+                        <name>Name</name>
+                        <dataType>HLAunicodeString</dataType>
+                        <updateType>Static</updateType>
+                        <updateCondition>NA</updateCondition>
+                        <ownership>DivestAcquire</ownership>
+                        <sharing>PublishSubscribe</sharing>
+                        <dimensions/>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics>Name of the robot</semantics>
+                    </attribute>
+                    <attribute>
+                        <name>X</name>
+                        <dataType>HLAinteger32BE</dataType>
+                        <updateType>Conditional</updateType>
+                        <updateCondition>User instruction</updateCondition>
+                        <ownership>DivestAcquire</ownership>
+                        <sharing>PublishSubscribe</sharing>
+                        <dimensions/>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics>Coordinate X</semantics>
+                    </attribute>
+                    <attribute>
+                        <name>Y</name>
+                        <dataType>HLAinteger32BE</dataType>
+                        <updateType>Conditional</updateType>
+                        <updateCondition>User instruction</updateCondition>
+                        <ownership>DivestAcquire</ownership>
+                        <sharing>PublishSubscribe</sharing>
+                        <dimensions/>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics>Coordinate Y</semantics>
+                    </attribute>
+                    <attribute>
+                        <name>Direction</name>
+                        <dataType>DirOfMov</dataType>
+                        <updateType>Conditional</updateType>
+                        <updateCondition>User instruction</updateCondition>
+                        <ownership>DivestAcquire</ownership>
+                        <sharing>PublishSubscribe</sharing>
+                        <dimensions/>
+                        <transportation>HLAreliable</transportation>
+                        <order>Receive</order>
+                        <semantics>Direction of movement</semantics>
+                    </attribute>
+                </objectClass>
+        </objectClass>
+    </objects>
+    <interactions>
+        <interactionClass>
+                <name>HLAinteractionRoot</name>
+        </interactionClass>
+    </interactions>
+    <dataTypes>
+        <enumeratedDataTypes>
+            <enumeratedData>
+                <name>DirOfMov</name>
+                    <representation>HLAinteger32BE</representation>
+                    <semantics>Direction of movement</semantics>
+                    <enumerator>
+                        <name>Nord</name>
+                        <value>1</value>
+                    </enumerator>
+                    <enumerator>
+                        <name>South</name>
+                        <value>2</value>
+                    </enumerator>
+                    <enumerator>
+                        <name>West</name>
+                        <value>3</value>
+                    </enumerator>
+                    <enumerator>
+                        <name>East</name>
+                        <value>4</value>
+                    </enumerator>
+            </enumeratedData>
+        </enumeratedDataTypes>
+    </dataTypes>
+</objectModel>
