@@ -10,8 +10,10 @@ Fedamb::Fedamb()
 {
     // initialize all the variable values
 
-    this->isAnnounced   = false;
-    this->isReadyToRun  = false;
+    this->SyncisAnnounced   = false;
+    this->FedisReadyToRun  = false;
+    this->FedisReadyToDel  = false;
+    this->NameisReserved  = false;
 
 }
 
@@ -41,7 +43,9 @@ void Fedamb::announceSynchronizationPoint( const std::wstring& label,
 {
     wcout << L"Synchronization point announced: " << label << endl;
     if( label.compare(L"ReadyToRun") == 0 )
-        this->isAnnounced = true;
+        this->SyncisAnnounced = true;
+    if( label.compare(L"ReadyToDelete") == 0 )
+        this->SyncisAnnounced = true;
 }
 
 void Fedamb::federationSynchronized( const std::wstring& label, FederateHandleSet const& failedToSyncSet)
@@ -49,15 +53,18 @@ void Fedamb::federationSynchronized( const std::wstring& label, FederateHandleSe
 {
     wcout << L"Federation Synchronized: " << label << endl;
     if( label.compare(L"ReadyToRun") == 0 )
-        this->isReadyToRun = true;
+        this->FedisReadyToRun = true;
+    if( label.compare(L"ReadyToDelete") == 0 )
+        this->FedisReadyToDel= true;
+        this->SyncisAnnounced = false;
 }
 
 void Fedamb:: objectInstanceNameReservationSucceeded (
         std::wstring const & theObjectInstanceName)
         throw (
         FederateInternalError){
-    if( theObjectInstanceName.compare(L"Robot1") == 0 )
-        this->isReserved = true;
+    if( theObjectInstanceName.compare(L"Robot2") == 0 )
+        this->NameisReserved = true;
     wcout << L"Succesfully reserved objectInstanceName:" << theObjectInstanceName << endl;
 }
 
@@ -89,3 +96,40 @@ void Fedamb::discoverObjectInstance( ObjectInstanceHandle theObject,
          << L", name =" << theObjectName
          << L", createdBy =" << producingFederate << endl;
 }
+
+void Fedamb::reflectAttributeValues( ObjectInstanceHandle theObject,
+                                            const AttributeHandleValueMap& theAttributes,
+                                            const VariableLengthData& tag,
+                                            OrderType sentOrder,
+                                            TransportationType theType,
+                                            SupplementalReflectInfo theReflectInfo )
+        throw( FederateInternalError )
+{
+    wcout << L"Reflection Received:";
+
+    // print the handle
+
+    wcout << L" object =" << theObject;
+
+    // print the attribute information
+
+    wcout << ", attributeCount =" << theAttributes.size() << endl;
+    AttributeHandleValueMap::const_iterator iterator;
+    for( iterator = theAttributes.begin(); iterator != theAttributes.end(); iterator++ )
+    {
+        // print the attribute handle
+
+        wcout << L"\tattrHandle =" << (*iterator).first
+              << L", attrSize =" << (*iterator).second.size() << endl;
+    }
+}
+    void Fedamb::removeObjectInstance( ObjectInstanceHandle theObject,
+                                              const VariableLengthData& tag,
+                                              OrderType sentOrder,
+                                              SupplementalRemoveInfo theRemoveInfo )
+            throw( FederateInternalError )
+    {
+        wcout << L"Object Removed: handle=" << theObject << endl;
+    }
+
+

@@ -1,14 +1,21 @@
 #include <iostream>
 #include "RTI/RTI1516.h"
+#include "RTI/encoding/BasicDataElements.h"
+#include "RTI/encoding/HLAvariantRecord.h"
 #include "Fedamb.h"
 #include "Federate.h"
 #include <string>
+#include <unistd.h>
 
 using namespace rti1516e;
 
 // constructots //
 
-Federate::Federate(){
+Federate::Federate(int x, int y, int dir, wstring name){
+    X = x;
+    Y = y;
+    Direction = dir;
+    Name = name;
 }
 
 Federate::~Federate(){
@@ -18,6 +25,12 @@ delete this->fedamb;
 
 void Federate::runFederate( std::wstring federateName )
 {
+
+        wcout << "Initial values:" << endl;
+        wcout << "Name:" << Name << endl;
+        wcout << "X:" << X << endl;
+        wcout << "Y:" << Y << endl;
+        wcout << "Direction:" << Direction << endl;
 
         // create the RTIambassador //
 
@@ -82,9 +95,10 @@ void Federate::runFederate( std::wstring federateName )
         wcout << L"Joined Federation as " << federateName << endl;
 
         // synchronization //
+
         VariableLengthData tag ((void*)"", 1 );
-        rtiamb->registerFederationSynchronizationPoint( READY_TO_RUN, tag );
-        while( fedamb->isAnnounced == false )
+        rtiamb->registerFederationSynchronizationPoint(READY_TO_RUN , tag );
+        while( fedamb->SyncisAnnounced == false )
             {
                 rtiamb->evokeMultipleCallbacks( 0.1, 1.0 );
             }
@@ -93,7 +107,7 @@ void Federate::runFederate( std::wstring federateName )
 
         rtiamb->synchronizationPointAchieved( READY_TO_RUN );
             wcout << L"Achieved sync point: " << READY_TO_RUN << L", waiting for federation..." << endl;
-            while( fedamb->isReadyToRun == false )
+            while( fedamb->FedisReadyToRun == false )
             {
                 rtiamb->evokeMultipleCallbacks( 0.1, 1.0 );
             }
@@ -101,7 +115,7 @@ void Federate::runFederate( std::wstring federateName )
             // preparations for discovering objects //
 
             try {
-                 robotClassHandle = rtiamb->getObjectClassHandle(L"Robot");
+                 robotClassHandle = rtiamb->getObjectClassHandle(L"HLAobjectRoot.Robot");
                  wcout << L"Got robotClassHandle" << endl;
             } catch (Exception& e){
                 wcout << L"Didn't get robotClassHandle: " << e.what() << endl;
@@ -153,15 +167,17 @@ void Federate::runFederate( std::wstring federateName )
                 wcout << L"Can't subscribe attributes: " << e.what() << endl;
             }
 
-            wstring NameToReserve = L"Robot1";
+            // discovering objects //
+
+            wstring NameToReserve = L"Robot2";
 
 
-                rtiamb->reserveObjectInstanceName(NameToReserve);
-                wcout << L"Reserved ObjectInstanceName: " << NameToReserve << endl;
-                while( fedamb->isReserved == false )
-                    {
-                        rtiamb->evokeMultipleCallbacks( 0.1, 1.0 );
-                    }
+            rtiamb->reserveObjectInstanceName(NameToReserve);
+            wcout << L"Reserved ObjectInstanceName: " << NameToReserve << endl;
+            while( fedamb->NameisReserved == false )
+                {
+                    rtiamb->evokeMultipleCallbacks( 0.1, 1.0 );
+                }
 
             try {
             robotInstanceHandle = rtiamb->registerObjectInstance(robotClassHandle, NameToReserve);
@@ -170,7 +186,37 @@ void Federate::runFederate( std::wstring federateName )
                 wcout << L"Didn't registeredObjectInstance: " << e.what() << endl;
             }
 
-        
+            // release initial values //
+            updatingAttributesValues(robotInstanceHandle, Name, X, Y, Direction);
+
+        // main simulation //
+
+            for (int i = 0; i < 5; i++) {
+                    X++;
+                    Y++;
+                    updatingAttributesValues(robotInstanceHandle, Name, X, Y, Direction);
+                    //sleep(1);
+            }
+
+        // delete object instance //
+        // Note: we need to syncronize federation, because some federates could still reflect our attr values //
+
+            rtiamb->registerFederationSynchronizationPoint(READY_TO_DELETE , tag );
+            while( fedamb->SyncisAnnounced == false )
+                {
+                    rtiamb->evokeMultipleCallbacks( 0.1, 1.0 );
+                }
+
+            rtiamb->synchronizationPointAchieved( READY_TO_DELETE );
+                wcout << L"Achieved sync point: " << READY_TO_DELETE << L", waiting for federation..." << endl;
+                while( fedamb->FedisReadyToDel == false )
+                {
+                    rtiamb->evokeMultipleCallbacks( 0.1, 1.0 );
+                }
+
+        VariableLengthData del_tag ((void*)"Del",  4);
+        rtiamb->deleteObjectInstance( robotInstanceHandle, del_tag );
+        wcout << L"Deleted object instance, handle:"<< robotInstanceHandle << endl;
 
         // resign from the federation //
 
@@ -205,6 +251,32 @@ void Federate::runFederate( std::wstring federateName )
 }
 
 // other methods //
+void Federate::updatingAttributesValues(ObjectInstanceHandle objectHandle, wstring Name, int X, int Y, int Direction)
+{
+    HLAunicodeString nameEncoder;
+    HLAinteger32BE XEncoder, YEncoder, DirectionIntEncoder;
+    //HLAvariantRecord DirectionEncoder;
+
+    AttributeHandleValueMap attributes;
+    VariableLengthData userSuppliedTag;
+
+    nameEncoder.set(Name);
+    XEncoder.set(X);
+    YEncoder.set(Y);
+    DirectionIntEncoder.set(Direction);
+
+    attributes[nameAttrHandle] = nameEncoder.encode();
+    attributes[xAttrHandle] = XEncoder.encode();
+    attributes[yAttrHandle] = YEncoder.encode();
+
+    try {
+        rtiamb->updateAttributeValues(objectHandle, attributes, userSuppliedTag);
+        wcout << L"Attributes successfuly updated" << endl;
+    } catch (Exception& e){
+        wcout << L"Can't update attributes: " << e.what() << endl;
+    }
+}
+
 
 void Federate::waitForUser()
 {
@@ -212,3 +284,8 @@ void Federate::waitForUser()
     string line;
     getline( cin, line );
 }
+
+void Federate::synchronization(){
+}
+
+

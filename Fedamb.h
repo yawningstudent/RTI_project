@@ -12,9 +12,10 @@ class Fedamb : public rti1516e::NullFederateAmbassador
     public:
         // variables //
 
-        bool isAnnounced;
-        bool isReadyToRun;
-        bool isReserved;
+        bool SyncisAnnounced;
+        bool FedisReadyToRun;
+        bool FedisReadyToDel;
+        bool NameisReserved;
 
         // methods //
         Fedamb();
@@ -58,6 +59,20 @@ class Fedamb : public rti1516e::NullFederateAmbassador
                                                      const std::wstring& theObjectName,
                                                      FederateHandle producingFederate )
                     throw( FederateInternalError );
+
+        virtual void reflectAttributeValues( ObjectInstanceHandle theObject,
+                                                    const AttributeHandleValueMap& theAttributes,
+                                                    const VariableLengthData& tag,
+                                                    OrderType sentOrder,
+                                                    TransportationType theType,
+                                                    SupplementalReflectInfo theReflectInfo )
+                throw( FederateInternalError );
+
+        virtual void removeObjectInstance( ObjectInstanceHandle theObject,
+                                                  const VariableLengthData& tag,
+                                                  OrderType sentOrder,
+                                                  SupplementalRemoveInfo theRemoveInfo )
+                throw( FederateInternalError );
 };
 
 #endif /*FEDAMB_H_*/

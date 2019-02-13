@@ -8,6 +8,7 @@ using namespace rti1516e;
 using namespace std;
 
 #define READY_TO_RUN L"ReadyToRun"
+#define READY_TO_DELETE L"ReadyToDelete"
 
 class Federate
 {
@@ -28,13 +29,17 @@ AttributeHandle directionAttrHandle;
 
 //public methods//
 
-Federate();
+Federate(int, int, int, wstring);
 virtual ~Federate();
 void runFederate(std::wstring federateName);
 
 private:
-
+        // values //
+        int X, Y, Direction;
+        wstring Name;
+        void updatingAttributesValues(ObjectInstanceHandle, wstring, int, int, int);
         void waitForUser();
+        void synchronization();
 };
 
 #endif /*FEDERATE_H_*/
