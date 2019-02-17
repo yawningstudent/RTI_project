@@ -1,0 +1,104 @@
+Synchronization point announced: ReadyToRun
+Failed to register sync point: ReadyToRun
+Federation Synchronized: ReadyToRun
+Succesfully reserved objectInstanceName:Robot2
+Discoverd Object: handle =rti1516e::ObjectInstanceHandle(33), ObjectClassHandle =rti1516e::ObjectClassHandle(4), name =Robot1
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Successfully registered sync point: ReadyToDelete
+Synchronization point announced: ReadyToDelete
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Reflection Received: object =rti1516e::ObjectInstanceHandle(33), attributeCount =3
+	attrHandle =rti1516e::AttributeHandle(1), attrSize =16
+	attrHandle =rti1516e::AttributeHandle(2), attrSize =4
+	attrHandle =rti1516e::AttributeHandle(3), attrSize =4
+Federation Synchronized: ReadyToDelete

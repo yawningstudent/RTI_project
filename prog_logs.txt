@@ -1,0 +1,52 @@
+input file opened
+Initial values:
+Name:Robot2
+X:0
+Y:0
+X
+10
+0
+10
+15
+Created Fedamb
+Didn't create federation, it already existed
+Joined Federation as Robot2
+Achieved sync point: ReadyToRun, waiting for federation...
+Got robotClassHandle
+Got nameAttrHandle
+Got xAttrHandle
+Got yAttrHandle
+Published
+Subscribed
+Reserved ObjectInstanceName: Robot2
+Registered robotInstanceHandle
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Attributes successfuly updated
+Achieved sync point: ReadyToDelete, waiting for federation...
+Deleted object instance, handle:rti1516e::ObjectInstanceHandle(32)
+Resigned from Federation
+Destroyed Federation

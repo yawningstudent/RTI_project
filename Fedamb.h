@@ -2,6 +2,7 @@
 #define FEDAMB_H_
 
 #include <string>
+#include <fstream>
 #include <RTI/NullFederateAmbassador.h>
 
 using namespace rti1516e;
@@ -16,7 +17,7 @@ class Fedamb : public rti1516e::NullFederateAmbassador
         bool FedisReadyToRun;
         bool FedisReadyToDel;
         bool NameisReserved;
-
+        wofstream callback_logs;
         // methods //
         Fedamb();
         virtual ~Fedamb() throw();

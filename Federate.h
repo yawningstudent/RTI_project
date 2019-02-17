@@ -2,6 +2,7 @@
 #define FEDERATE_H_
 
 #include "Fedamb.h"
+#include <fstream>
 #include "RTI/RTI1516.h"
 
 using namespace rti1516e;
@@ -14,7 +15,7 @@ class Federate
 {
 
 public:
-rti1516e::RTIambassador *rtiamb;
+RTIambassador *rtiamb;
 Fedamb *fedamb;
 
 //fom handles//
@@ -25,21 +26,24 @@ AttributeHandleSet attrHandleSet;
 AttributeHandle nameAttrHandle;
 AttributeHandle xAttrHandle;
 AttributeHandle yAttrHandle;
-AttributeHandle directionAttrHandle;
+//AttributeHandle directionAttrHandle;
 
 //public methods//
 
-Federate(int, int, int, wstring);
+Federate(wstring);
 virtual ~Federate();
-void runFederate(std::wstring federateName);
+void runFederate(wstring, char*);
 
 private:
         // values //
         int X, Y, Direction;
+        wofstream prog_logs;
         wstring Name;
-        void updatingAttributesValues(ObjectInstanceHandle, wstring, int, int, int);
+        void updatingAttributesValues(ObjectInstanceHandle);
         void waitForUser();
         void synchronization();
+        void DirectionChoose(int, int);
+        void movement(int, int);
 };
 
 #endif /*FEDERATE_H_*/
